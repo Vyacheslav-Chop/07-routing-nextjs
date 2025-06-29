@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { fetchNoteById } from "@/lib/api";
 import css from "./NotePreview.module.css";
 import { useQuery } from "@tanstack/react-query";
@@ -7,9 +7,10 @@ import ErrorText from "../Error/ErrorText";
 
 type NotePreviewProps = {
   id: number;
+  onClose: () => void;
 };
 
-export default function NotePreview({ id }: NotePreviewProps) {
+export default function NotePreview({ id, onClose }: NotePreviewProps) {
   const {
     data: note,
     isLoading,
@@ -29,7 +30,9 @@ export default function NotePreview({ id }: NotePreviewProps) {
           <div className={css.item}>
             <div className={css.header}>
               <h2>{note?.title}</h2>
-              <button className={css.editBtn}>Edit note</button>
+              <button className={css.backBtn} onClick={onClose}>
+                Go back
+              </button>
             </div>
             <p className={css.content}>{note?.content}</p>
             <p className={css.date}>{note?.createdAt}</p>

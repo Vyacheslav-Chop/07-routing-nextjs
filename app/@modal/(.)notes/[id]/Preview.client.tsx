@@ -12,7 +12,7 @@ export default function PreviewClient() {
 
   return (
     <Modal onClose={closeModal}>
-      <NotePreview id={Number(id)} />
+      <NotePreview id={Number(id)} onClose={closeModal} />
     </Modal>
   );
 }
